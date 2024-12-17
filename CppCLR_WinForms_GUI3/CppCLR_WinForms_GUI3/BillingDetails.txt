@@ -1,0 +1,12 @@
+Patient Name: this is the 
+Total Amount: 100
+Paid Amount: 90
+----------------------------------
+Patient Name: brbrwb
+Total Amount: 200
+Paid Amount: 180
+----------------------------------
+Patient Name: kkk
+Total Amount: 90
+Paid Amount: 80
+----------------------------------

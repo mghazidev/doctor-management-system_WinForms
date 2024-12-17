@@ -1,0 +1,20 @@
+Doctor Name: hhehhe
+Specialization: sd
+Available Hours: 22
+----------------------------------
+Doctor Name: new doctor
+Specialization: sab new
+Available Hours: 2
+----------------------------------
+Doctor Name: sfsdf
+Specialization: sfsdfsdf
+Available Hours: 3
+----------------------------------
+Doctor Name: hgfhghg
+Specialization: werwr
+Available Hours: 4324
+----------------------------------
+Doctor Name: fsdfsdf
+Specialization: bbb
+Available Hours: 2
+----------------------------------

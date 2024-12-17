@@ -1,0 +1,6 @@
+﻿  CppCLR_WinFormsProject.cpp
+C:\Users\Muhammad Ghazi\source\repos\project\CppCLR_WinForms_GUI3\CppCLR_WinForms_GUI3\DoctorManager.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  (compiling source file '/CppCLR_WinFormsProject.cpp')
+  
+  AssemblyInfo.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  CppCLR_WinForms_GUI3.vcxproj -> C:\Users\Muhammad Ghazi\source\repos\project\CppCLR_WinForms_GUI3\x64\Debug\CppCLR_WinForms_GUI3.exe

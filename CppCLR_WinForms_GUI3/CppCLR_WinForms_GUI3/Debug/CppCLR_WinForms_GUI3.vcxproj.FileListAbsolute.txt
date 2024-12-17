@@ -1,0 +1,3 @@
+C:\Users\Muhammad Ghazi\source\repos\project\CppCLR_WinForms_GUI3\CppCLR_WinForms_GUI3\Debug\CppCLR_WinForms_GUI3.vcxproj.AssemblyReference.cache
+C:\Users\Muhammad Ghazi\source\repos\project\CppCLR_WinForms_GUI3\CppCLR_WinForms_GUI3\Debug\CppCLR_WinForms_GUI3.Form1.resources
+C:\Users\Muhammad Ghazi\source\repos\project\CppCLR_WinForms_GUI3\CppCLR_WinForms_GUI3\Debug\CppCLR_WinForms_GUI3.vcxproj.GenerateResource.cache
