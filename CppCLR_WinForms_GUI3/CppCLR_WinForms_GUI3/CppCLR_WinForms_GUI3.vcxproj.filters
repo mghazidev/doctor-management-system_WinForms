@@ -68,10 +68,7 @@
     <ClInclude Include="FeedbackManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="FileFetcher.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="DoctorDetailsFetcher.h">
+    <ClInclude Include="DataHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -136,11 +136,10 @@
   <ItemGroup>
     <ClInclude Include="BillingManager.h" />
     <ClInclude Include="CppCLR_Utils.h" />
-    <ClInclude Include="DoctorDetailsFetcher.h" />
+    <ClInclude Include="DataHandler.h" />
     <ClInclude Include="DoctorManager.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="FeedbackManager.h" />
-    <ClInclude Include="FileFetcher.h" />
     <ClInclude Include="FileHandler.h" />
     <ClInclude Include="Form1.h">
       <FileType>CppForm</FileType>

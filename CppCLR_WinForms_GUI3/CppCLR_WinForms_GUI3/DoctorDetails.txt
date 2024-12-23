@@ -1,20 +1,8 @@
-Doctor Name: hhehhe
-Specialization: sd
-Available Hours: 22
+Doctor Name: This is last doctor testing
+Specialization: best specialization
+Available Hours: 9 to 5
 ----------------------------------
-Doctor Name: new doctor
-Specialization: sab new
-Available Hours: 2
-----------------------------------
-Doctor Name: sfsdf
-Specialization: sfsdfsdf
-Available Hours: 3
-----------------------------------
-Doctor Name: hgfhghg
-Specialization: werwr
-Available Hours: 4324
-----------------------------------
-Doctor Name: fsdfsdf
-Specialization: bbb
+Doctor Name: new
+Specialization: d
 Available Hours: 2
 ----------------------------------

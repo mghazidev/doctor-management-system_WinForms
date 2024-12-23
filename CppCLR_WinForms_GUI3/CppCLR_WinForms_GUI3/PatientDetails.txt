@@ -1,16 +1,4 @@
-Patient Name: this is the 
-Disease: dsf
-Contact: 4234324
-----------------------------------
-Patient Name: brbrwb
-Disease: erewr
-Contact: 93939393
-----------------------------------
-Patient Name: kkk
-Disease: ee
-Contact: 9999999999
-----------------------------------
-Patient Name: kokoiirt
-Disease: dfgdfg
-Contact: 123123123
+Patient Name: this is the last patient testing
+Disease: best diseae
+Contact: 033447756849
 ----------------------------------
