@@ -1,8 +1,4 @@
-Doctor Name: This is last doctor testing
-Specialization: best specialization
-Available Hours: 9 to 5
-----------------------------------
-Doctor Name: new
-Specialization: d
-Available Hours: 2
+Doctor Name: Doctor 1
+Specialization: Specializationn 1
+Available Hours: 9pm to 5pm
 ----------------------------------

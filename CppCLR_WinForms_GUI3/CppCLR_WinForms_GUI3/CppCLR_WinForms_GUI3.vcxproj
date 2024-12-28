@@ -147,6 +147,7 @@
     <ClInclude Include="Header1.h" />
     <ClInclude Include="Header2.h" />
     <ClInclude Include="LoginHandler.h" />
+    <ClInclude Include="MessageManager.h" />
     <ClInclude Include="PatientManager.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Resource.h" />

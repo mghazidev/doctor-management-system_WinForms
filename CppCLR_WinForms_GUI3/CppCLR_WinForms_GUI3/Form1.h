@@ -7,6 +7,7 @@
 #include "BillingManager.h"
 #include "FeedbackManager.h"
 #include "DataHandler.h"
+#include "MessageManager.h"
 
 
 namespace CppCLRWinFormsProject {
@@ -87,6 +88,7 @@ namespace CppCLRWinFormsProject {
 
          BillingManager^ billingManager;
           FeedbackManager^ feedbackManager;
+          MessageManager^ messageManager;
 
  
 
@@ -107,6 +109,23 @@ namespace CppCLRWinFormsProject {
   private: System::Windows::Forms::GroupBox^ doctordashboardpatientdetailsgroupbox;
   private: System::Windows::Forms::GroupBox^ doctordashboarddoctordetailsgroupbox;
   private: System::Windows::Forms::GroupBox^ doctordashboardbillingdetailsgroupbox;
+  private: System::Windows::Forms::Button^ logoutbutton;
+  private: System::Windows::Forms::Button^ logoutbtn;
+  private: System::Windows::Forms::Label^ messagehead;
+  private: System::Windows::Forms::Label^ mdoctornamelabel;
+  private: System::Windows::Forms::ComboBox^ mdoctorselectdropdown;
+  private: System::Windows::Forms::TextBox^ messagetextbox;
+  private: System::Windows::Forms::Label^ mMessagelabel;
+  private: System::Windows::Forms::Button^ sendmessagebtn;
+  private: System::Windows::Forms::ComboBox^ dtimingselect;
+  private: System::Windows::Forms::TabPage^ Messages;
+  private: System::Windows::Forms::GroupBox^ UnreadMessagesGroupBox;
+  private: System::Windows::Forms::GroupBox^ readMessagesGroupBox;
+  private: System::Windows::Forms::Button^ markreadBtn;
+
+
+
+
 
 
 
@@ -143,8 +162,8 @@ namespace CppCLRWinFormsProject {
       LoadPatientNames();
       LoadPatientNamesIntoComboBox();
       LoadDoctorNamesIntoFeedbackComboBox();
-
-     
+      LoadDoctorNamesIntoMessageComboBox();
+      //LoadMessages();
       LoadData();
     }
 
@@ -173,7 +192,7 @@ namespace CppCLRWinFormsProject {
 
   private: System::Windows::Forms::Button^ adddoctor;
 
-  private: System::Windows::Forms::TextBox^ availablehourstextfield;
+
 
   private: System::Windows::Forms::Label^ availablehours;
   private: System::Windows::Forms::TextBox^ specializationtextfield;
@@ -215,10 +234,10 @@ namespace CppCLRWinFormsProject {
     {
         this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
         this->doctor = (gcnew System::Windows::Forms::TabPage());
+        this->dtimingselect = (gcnew System::Windows::Forms::ComboBox());
         this->deletedoctorcombobox = (gcnew System::Windows::Forms::ComboBox());
         this->deletedoctor = (gcnew System::Windows::Forms::Button());
         this->adddoctor = (gcnew System::Windows::Forms::Button());
-        this->availablehourstextfield = (gcnew System::Windows::Forms::TextBox());
         this->availablehours = (gcnew System::Windows::Forms::Label());
         this->specializationtextfield = (gcnew System::Windows::Forms::TextBox());
         this->specialization = (gcnew System::Windows::Forms::Label());
@@ -247,6 +266,7 @@ namespace CppCLRWinFormsProject {
         this->emaillabel = (gcnew System::Windows::Forms::Label());
         this->Loginhead = (gcnew System::Windows::Forms::Label());
         this->UserDashboardTab = (gcnew System::Windows::Forms::TabPage());
+        this->logoutbtn = (gcnew System::Windows::Forms::Button());
         this->tableLayoutPanel1 = (gcnew System::Windows::Forms::TableLayoutPanel());
         this->billingdetailsubhead = (gcnew System::Windows::Forms::Label());
         this->doctordetailsubhead = (gcnew System::Windows::Forms::Label());
@@ -258,6 +278,14 @@ namespace CppCLRWinFormsProject {
         this->feedbackdetailsgroupbox = (gcnew System::Windows::Forms::GroupBox());
         this->userdashboardhead = (gcnew System::Windows::Forms::Label());
         this->doctordashboardtab = (gcnew System::Windows::Forms::TabPage());
+        this->logoutbutton = (gcnew System::Windows::Forms::Button());
+        this->tableLayoutPanel2 = (gcnew System::Windows::Forms::TableLayoutPanel());
+        this->patientdetailssubheaddoctortab = (gcnew System::Windows::Forms::Label());
+        this->doctordetailssubheaddoctortab = (gcnew System::Windows::Forms::Label());
+        this->billingdetailssubheaddoctortab = (gcnew System::Windows::Forms::Label());
+        this->doctordashboardpatientdetailsgroupbox = (gcnew System::Windows::Forms::GroupBox());
+        this->doctordashboarddoctordetailsgroupbox = (gcnew System::Windows::Forms::GroupBox());
+        this->doctordashboardbillingdetailsgroupbox = (gcnew System::Windows::Forms::GroupBox());
         this->doctordashboardhead = (gcnew System::Windows::Forms::Label());
         this->billingtab = (gcnew System::Windows::Forms::TabPage());
         this->addbill = (gcnew System::Windows::Forms::Button());
@@ -269,6 +297,12 @@ namespace CppCLRWinFormsProject {
         this->patientbilllabel = (gcnew System::Windows::Forms::Label());
         this->BillingHead = (gcnew System::Windows::Forms::Label());
         this->feedbacktab = (gcnew System::Windows::Forms::TabPage());
+        this->sendmessagebtn = (gcnew System::Windows::Forms::Button());
+        this->mMessagelabel = (gcnew System::Windows::Forms::Label());
+        this->messagetextbox = (gcnew System::Windows::Forms::TextBox());
+        this->mdoctorselectdropdown = (gcnew System::Windows::Forms::ComboBox());
+        this->mdoctornamelabel = (gcnew System::Windows::Forms::Label());
+        this->messagehead = (gcnew System::Windows::Forms::Label());
         this->addfeedbackbutton = (gcnew System::Windows::Forms::Button());
         this->feedbackselectionbox = (gcnew System::Windows::Forms::GroupBox());
         this->badradio = (gcnew System::Windows::Forms::RadioButton());
@@ -278,13 +312,10 @@ namespace CppCLRWinFormsProject {
         this->feedbackdoctordropdown = (gcnew System::Windows::Forms::ComboBox());
         this->feedbackdoctorlabel = (gcnew System::Windows::Forms::Label());
         this->feedbackhead = (gcnew System::Windows::Forms::Label());
-        this->tableLayoutPanel2 = (gcnew System::Windows::Forms::TableLayoutPanel());
-        this->patientdetailssubheaddoctortab = (gcnew System::Windows::Forms::Label());
-        this->doctordetailssubheaddoctortab = (gcnew System::Windows::Forms::Label());
-        this->billingdetailssubheaddoctortab = (gcnew System::Windows::Forms::Label());
-        this->doctordashboardpatientdetailsgroupbox = (gcnew System::Windows::Forms::GroupBox());
-        this->doctordashboarddoctordetailsgroupbox = (gcnew System::Windows::Forms::GroupBox());
-        this->doctordashboardbillingdetailsgroupbox = (gcnew System::Windows::Forms::GroupBox());
+        this->Messages = (gcnew System::Windows::Forms::TabPage());
+        this->markreadBtn = (gcnew System::Windows::Forms::Button());
+        this->readMessagesGroupBox = (gcnew System::Windows::Forms::GroupBox());
+        this->UnreadMessagesGroupBox = (gcnew System::Windows::Forms::GroupBox());
         this->tabControl1->SuspendLayout();
         this->doctor->SuspendLayout();
         this->Patient->SuspendLayout();
@@ -293,10 +324,11 @@ namespace CppCLRWinFormsProject {
         this->UserDashboardTab->SuspendLayout();
         this->tableLayoutPanel1->SuspendLayout();
         this->doctordashboardtab->SuspendLayout();
+        this->tableLayoutPanel2->SuspendLayout();
         this->billingtab->SuspendLayout();
         this->feedbacktab->SuspendLayout();
         this->feedbackselectionbox->SuspendLayout();
-        this->tableLayoutPanel2->SuspendLayout();
+        this->Messages->SuspendLayout();
         this->SuspendLayout();
         // 
         // tabControl1
@@ -308,18 +340,19 @@ namespace CppCLRWinFormsProject {
         this->tabControl1->Controls->Add(this->doctordashboardtab);
         this->tabControl1->Controls->Add(this->billingtab);
         this->tabControl1->Controls->Add(this->feedbacktab);
+        this->tabControl1->Controls->Add(this->Messages);
         this->tabControl1->Location = System::Drawing::Point(12, 13);
         this->tabControl1->Name = L"tabControl1";
         this->tabControl1->SelectedIndex = 0;
-        this->tabControl1->Size = System::Drawing::Size(1501, 756);
+        this->tabControl1->Size = System::Drawing::Size(1501, 473);
         this->tabControl1->TabIndex = 0;
         // 
         // doctor
         // 
+        this->doctor->Controls->Add(this->dtimingselect);
         this->doctor->Controls->Add(this->deletedoctorcombobox);
         this->doctor->Controls->Add(this->deletedoctor);
         this->doctor->Controls->Add(this->adddoctor);
-        this->doctor->Controls->Add(this->availablehourstextfield);
         this->doctor->Controls->Add(this->availablehours);
         this->doctor->Controls->Add(this->specializationtextfield);
         this->doctor->Controls->Add(this->specialization);
@@ -329,10 +362,20 @@ namespace CppCLRWinFormsProject {
         this->doctor->Location = System::Drawing::Point(4, 22);
         this->doctor->Name = L"doctor";
         this->doctor->Padding = System::Windows::Forms::Padding(3);
-        this->doctor->Size = System::Drawing::Size(1493, 583);
+        this->doctor->Size = System::Drawing::Size(1493, 426);
         this->doctor->TabIndex = 0;
         this->doctor->Text = L"Doctor";
         this->doctor->UseVisualStyleBackColor = true;
+        // 
+        // dtimingselect
+        // 
+        this->dtimingselect->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+        this->dtimingselect->FormattingEnabled = true;
+        this->dtimingselect->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"9pm to 5pm", L"6pm to 2am" });
+        this->dtimingselect->Location = System::Drawing::Point(197, 156);
+        this->dtimingselect->Name = L"dtimingselect";
+        this->dtimingselect->Size = System::Drawing::Size(201, 21);
+        this->dtimingselect->TabIndex = 10;
         // 
         // deletedoctorcombobox
         // 
@@ -361,13 +404,6 @@ namespace CppCLRWinFormsProject {
         this->adddoctor->Text = L"Add Doctor";
         this->adddoctor->UseVisualStyleBackColor = true;
         this->adddoctor->Click += gcnew System::EventHandler(this, &Form1::adddoctor_Click);
-        // 
-        // availablehourstextfield
-        // 
-        this->availablehourstextfield->Location = System::Drawing::Point(234, 154);
-        this->availablehourstextfield->Name = L"availablehourstextfield";
-        this->availablehourstextfield->Size = System::Drawing::Size(100, 20);
-        this->availablehourstextfield->TabIndex = 6;
         // 
         // availablehours
         // 
@@ -434,7 +470,7 @@ namespace CppCLRWinFormsProject {
         this->Patient->Location = System::Drawing::Point(4, 22);
         this->Patient->Name = L"Patient";
         this->Patient->Padding = System::Windows::Forms::Padding(3);
-        this->Patient->Size = System::Drawing::Size(1493, 583);
+        this->Patient->Size = System::Drawing::Size(1493, 426);
         this->Patient->TabIndex = 1;
         this->Patient->Text = L"Patient";
         this->Patient->UseVisualStyleBackColor = true;
@@ -536,14 +572,14 @@ namespace CppCLRWinFormsProject {
         this->LoginTab->Location = System::Drawing::Point(4, 22);
         this->LoginTab->Name = L"LoginTab";
         this->LoginTab->Padding = System::Windows::Forms::Padding(3);
-        this->LoginTab->Size = System::Drawing::Size(1493, 583);
+        this->LoginTab->Size = System::Drawing::Size(1493, 426);
         this->LoginTab->TabIndex = 2;
         this->LoginTab->Text = L"Login ";
         this->LoginTab->UseVisualStyleBackColor = true;
         // 
         // loginbutton
         // 
-        this->loginbutton->Location = System::Drawing::Point(476, 316);
+        this->loginbutton->Location = System::Drawing::Point(477, 274);
         this->loginbutton->Name = L"loginbutton";
         this->loginbutton->Size = System::Drawing::Size(279, 23);
         this->loginbutton->TabIndex = 7;
@@ -628,15 +664,26 @@ namespace CppCLRWinFormsProject {
         // 
         // UserDashboardTab
         // 
+        this->UserDashboardTab->Controls->Add(this->logoutbtn);
         this->UserDashboardTab->Controls->Add(this->tableLayoutPanel1);
         this->UserDashboardTab->Controls->Add(this->userdashboardhead);
         this->UserDashboardTab->Location = System::Drawing::Point(4, 22);
         this->UserDashboardTab->Name = L"UserDashboardTab";
         this->UserDashboardTab->Padding = System::Windows::Forms::Padding(3);
-        this->UserDashboardTab->Size = System::Drawing::Size(1493, 730);
+        this->UserDashboardTab->Size = System::Drawing::Size(1493, 426);
         this->UserDashboardTab->TabIndex = 3;
         this->UserDashboardTab->Text = L"User Dashboard";
         this->UserDashboardTab->UseVisualStyleBackColor = true;
+        // 
+        // logoutbtn
+        // 
+        this->logoutbtn->Location = System::Drawing::Point(1113, 20);
+        this->logoutbtn->Name = L"logoutbtn";
+        this->logoutbtn->Size = System::Drawing::Size(190, 23);
+        this->logoutbtn->TabIndex = 2;
+        this->logoutbtn->Text = L"Logout";
+        this->logoutbtn->UseVisualStyleBackColor = true;
+        this->logoutbtn->Click += gcnew System::EventHandler(this, &Form1::logoutbutton_Click);
         // 
         // tableLayoutPanel1
         // 
@@ -776,15 +823,124 @@ namespace CppCLRWinFormsProject {
         // 
         // doctordashboardtab
         // 
+        this->doctordashboardtab->Controls->Add(this->logoutbutton);
         this->doctordashboardtab->Controls->Add(this->tableLayoutPanel2);
         this->doctordashboardtab->Controls->Add(this->doctordashboardhead);
         this->doctordashboardtab->Location = System::Drawing::Point(4, 22);
         this->doctordashboardtab->Name = L"doctordashboardtab";
         this->doctordashboardtab->Padding = System::Windows::Forms::Padding(3);
-        this->doctordashboardtab->Size = System::Drawing::Size(1493, 730);
+        this->doctordashboardtab->Size = System::Drawing::Size(1493, 426);
         this->doctordashboardtab->TabIndex = 4;
         this->doctordashboardtab->Text = L"Doctor Dashboard";
         this->doctordashboardtab->UseVisualStyleBackColor = true;
+        // 
+        // logoutbutton
+        // 
+        this->logoutbutton->Location = System::Drawing::Point(1157, 23);
+        this->logoutbutton->Name = L"logoutbutton";
+        this->logoutbutton->Size = System::Drawing::Size(168, 23);
+        this->logoutbutton->TabIndex = 2;
+        this->logoutbutton->Text = L"Logout";
+        this->logoutbutton->UseVisualStyleBackColor = true;
+        this->logoutbutton->Click += gcnew System::EventHandler(this, &Form1::logoutbutton_Click);
+        // 
+        // tableLayoutPanel2
+        // 
+        this->tableLayoutPanel2->ColumnCount = 3;
+        this->tableLayoutPanel2->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
+            50)));
+        this->tableLayoutPanel2->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
+            50)));
+        this->tableLayoutPanel2->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute,
+            487)));
+        this->tableLayoutPanel2->Controls->Add(this->patientdetailssubheaddoctortab, 0, 0);
+        this->tableLayoutPanel2->Controls->Add(this->doctordetailssubheaddoctortab, 1, 0);
+        this->tableLayoutPanel2->Controls->Add(this->billingdetailssubheaddoctortab, 2, 0);
+        this->tableLayoutPanel2->Controls->Add(this->doctordashboardpatientdetailsgroupbox, 0, 1);
+        this->tableLayoutPanel2->Controls->Add(this->doctordashboarddoctordetailsgroupbox, 1, 1);
+        this->tableLayoutPanel2->Controls->Add(this->doctordashboardbillingdetailsgroupbox, 2, 1);
+        this->tableLayoutPanel2->Location = System::Drawing::Point(6, 68);
+        this->tableLayoutPanel2->Name = L"tableLayoutPanel2";
+        this->tableLayoutPanel2->RowCount = 2;
+        this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 3.20122F)));
+        this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 96.79878F)));
+        this->tableLayoutPanel2->Size = System::Drawing::Size(1481, 656);
+        this->tableLayoutPanel2->TabIndex = 1;
+        // 
+        // patientdetailssubheaddoctortab
+        // 
+        this->patientdetailssubheaddoctortab->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+            | System::Windows::Forms::AnchorStyles::Left)
+            | System::Windows::Forms::AnchorStyles::Right));
+        this->patientdetailssubheaddoctortab->AutoSize = true;
+        this->patientdetailssubheaddoctortab->Location = System::Drawing::Point(3, 0);
+        this->patientdetailssubheaddoctortab->Name = L"patientdetailssubheaddoctortab";
+        this->patientdetailssubheaddoctortab->Size = System::Drawing::Size(491, 21);
+        this->patientdetailssubheaddoctortab->TabIndex = 0;
+        this->patientdetailssubheaddoctortab->Text = L"Patient Details";
+        this->patientdetailssubheaddoctortab->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+        // 
+        // doctordetailssubheaddoctortab
+        // 
+        this->doctordetailssubheaddoctortab->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+            | System::Windows::Forms::AnchorStyles::Left)
+            | System::Windows::Forms::AnchorStyles::Right));
+        this->doctordetailssubheaddoctortab->AutoSize = true;
+        this->doctordetailssubheaddoctortab->Location = System::Drawing::Point(500, 0);
+        this->doctordetailssubheaddoctortab->Name = L"doctordetailssubheaddoctortab";
+        this->doctordetailssubheaddoctortab->Size = System::Drawing::Size(491, 21);
+        this->doctordetailssubheaddoctortab->TabIndex = 1;
+        this->doctordetailssubheaddoctortab->Text = L"Doctor Details";
+        this->doctordetailssubheaddoctortab->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+        // 
+        // billingdetailssubheaddoctortab
+        // 
+        this->billingdetailssubheaddoctortab->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+            | System::Windows::Forms::AnchorStyles::Left)
+            | System::Windows::Forms::AnchorStyles::Right));
+        this->billingdetailssubheaddoctortab->AutoSize = true;
+        this->billingdetailssubheaddoctortab->Location = System::Drawing::Point(997, 0);
+        this->billingdetailssubheaddoctortab->Name = L"billingdetailssubheaddoctortab";
+        this->billingdetailssubheaddoctortab->Size = System::Drawing::Size(481, 21);
+        this->billingdetailssubheaddoctortab->TabIndex = 2;
+        this->billingdetailssubheaddoctortab->Text = L"Billing Details";
+        this->billingdetailssubheaddoctortab->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+        // 
+        // doctordashboardpatientdetailsgroupbox
+        // 
+        this->doctordashboardpatientdetailsgroupbox->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+            | System::Windows::Forms::AnchorStyles::Left)
+            | System::Windows::Forms::AnchorStyles::Right));
+        this->doctordashboardpatientdetailsgroupbox->AutoSize = true;
+        this->doctordashboardpatientdetailsgroupbox->Location = System::Drawing::Point(3, 24);
+        this->doctordashboardpatientdetailsgroupbox->Name = L"doctordashboardpatientdetailsgroupbox";
+        this->doctordashboardpatientdetailsgroupbox->Size = System::Drawing::Size(491, 629);
+        this->doctordashboardpatientdetailsgroupbox->TabIndex = 3;
+        this->doctordashboardpatientdetailsgroupbox->TabStop = false;
+        // 
+        // doctordashboarddoctordetailsgroupbox
+        // 
+        this->doctordashboarddoctordetailsgroupbox->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+            | System::Windows::Forms::AnchorStyles::Left)
+            | System::Windows::Forms::AnchorStyles::Right));
+        this->doctordashboarddoctordetailsgroupbox->AutoSize = true;
+        this->doctordashboarddoctordetailsgroupbox->Location = System::Drawing::Point(500, 24);
+        this->doctordashboarddoctordetailsgroupbox->Name = L"doctordashboarddoctordetailsgroupbox";
+        this->doctordashboarddoctordetailsgroupbox->Size = System::Drawing::Size(491, 629);
+        this->doctordashboarddoctordetailsgroupbox->TabIndex = 4;
+        this->doctordashboarddoctordetailsgroupbox->TabStop = false;
+        // 
+        // doctordashboardbillingdetailsgroupbox
+        // 
+        this->doctordashboardbillingdetailsgroupbox->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+            | System::Windows::Forms::AnchorStyles::Left)
+            | System::Windows::Forms::AnchorStyles::Right));
+        this->doctordashboardbillingdetailsgroupbox->AutoSize = true;
+        this->doctordashboardbillingdetailsgroupbox->Location = System::Drawing::Point(997, 24);
+        this->doctordashboardbillingdetailsgroupbox->Name = L"doctordashboardbillingdetailsgroupbox";
+        this->doctordashboardbillingdetailsgroupbox->Size = System::Drawing::Size(481, 629);
+        this->doctordashboardbillingdetailsgroupbox->TabIndex = 5;
+        this->doctordashboardbillingdetailsgroupbox->TabStop = false;
         // 
         // doctordashboardhead
         // 
@@ -808,7 +964,7 @@ namespace CppCLRWinFormsProject {
         this->billingtab->Location = System::Drawing::Point(4, 22);
         this->billingtab->Name = L"billingtab";
         this->billingtab->Padding = System::Windows::Forms::Padding(3);
-        this->billingtab->Size = System::Drawing::Size(1493, 583);
+        this->billingtab->Size = System::Drawing::Size(1493, 426);
         this->billingtab->TabIndex = 5;
         this->billingtab->Text = L"Billing ";
         this->billingtab->UseVisualStyleBackColor = true;
@@ -883,6 +1039,12 @@ namespace CppCLRWinFormsProject {
         // 
         // feedbacktab
         // 
+        this->feedbacktab->Controls->Add(this->sendmessagebtn);
+        this->feedbacktab->Controls->Add(this->mMessagelabel);
+        this->feedbacktab->Controls->Add(this->messagetextbox);
+        this->feedbacktab->Controls->Add(this->mdoctorselectdropdown);
+        this->feedbacktab->Controls->Add(this->mdoctornamelabel);
+        this->feedbacktab->Controls->Add(this->messagehead);
         this->feedbacktab->Controls->Add(this->addfeedbackbutton);
         this->feedbacktab->Controls->Add(this->feedbackselectionbox);
         this->feedbacktab->Controls->Add(this->feedbackdoctordropdown);
@@ -891,10 +1053,62 @@ namespace CppCLRWinFormsProject {
         this->feedbacktab->Location = System::Drawing::Point(4, 22);
         this->feedbacktab->Name = L"feedbacktab";
         this->feedbacktab->Padding = System::Windows::Forms::Padding(3);
-        this->feedbacktab->Size = System::Drawing::Size(1493, 583);
+        this->feedbacktab->Size = System::Drawing::Size(1493, 426);
         this->feedbacktab->TabIndex = 6;
         this->feedbacktab->Text = L"Feedback";
         this->feedbacktab->UseVisualStyleBackColor = true;
+        // 
+        // sendmessagebtn
+        // 
+        this->sendmessagebtn->Location = System::Drawing::Point(1029, 277);
+        this->sendmessagebtn->Name = L"sendmessagebtn";
+        this->sendmessagebtn->Size = System::Drawing::Size(277, 23);
+        this->sendmessagebtn->TabIndex = 10;
+        this->sendmessagebtn->Text = L"Send Message";
+        this->sendmessagebtn->UseVisualStyleBackColor = true;
+        this->sendmessagebtn->Click += gcnew System::EventHandler(this, &Form1::addmessagebutton_Click);
+        // 
+        // mMessagelabel
+        // 
+        this->mMessagelabel->AutoSize = true;
+        this->mMessagelabel->Location = System::Drawing::Point(874, 209);
+        this->mMessagelabel->Name = L"mMessagelabel";
+        this->mMessagelabel->Size = System::Drawing::Size(50, 13);
+        this->mMessagelabel->TabIndex = 9;
+        this->mMessagelabel->Text = L"Message";
+        // 
+        // messagetextbox
+        // 
+        this->messagetextbox->Location = System::Drawing::Point(947, 209);
+        this->messagetextbox->Name = L"messagetextbox";
+        this->messagetextbox->Size = System::Drawing::Size(312, 20);
+        this->messagetextbox->TabIndex = 8;
+        // 
+        // mdoctorselectdropdown
+        // 
+        this->mdoctorselectdropdown->FormattingEnabled = true;
+        this->mdoctorselectdropdown->Location = System::Drawing::Point(1094, 135);
+        this->mdoctorselectdropdown->Name = L"mdoctorselectdropdown";
+        this->mdoctorselectdropdown->Size = System::Drawing::Size(121, 21);
+        this->mdoctorselectdropdown->TabIndex = 7;
+        // 
+        // mdoctornamelabel
+        // 
+        this->mdoctornamelabel->AutoSize = true;
+        this->mdoctornamelabel->Location = System::Drawing::Point(931, 132);
+        this->mdoctornamelabel->Name = L"mdoctornamelabel";
+        this->mdoctornamelabel->Size = System::Drawing::Size(70, 13);
+        this->mdoctornamelabel->TabIndex = 6;
+        this->mdoctornamelabel->Text = L"Doctor Name";
+        // 
+        // messagehead
+        // 
+        this->messagehead->AutoSize = true;
+        this->messagehead->Location = System::Drawing::Point(955, 72);
+        this->messagehead->Name = L"messagehead";
+        this->messagehead->Size = System::Drawing::Size(134, 13);
+        this->messagehead->TabIndex = 5;
+        this->messagehead->Text = L"Send Message to a Doctor";
         // 
         // addfeedbackbutton
         // 
@@ -989,103 +1203,46 @@ namespace CppCLRWinFormsProject {
         this->feedbackhead->TabIndex = 0;
         this->feedbackhead->Text = L"Feedback";
         // 
-        // tableLayoutPanel2
+        // Messages
         // 
-        this->tableLayoutPanel2->ColumnCount = 3;
-        this->tableLayoutPanel2->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
-            50)));
-        this->tableLayoutPanel2->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
-            50)));
-        this->tableLayoutPanel2->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute,
-            487)));
-        this->tableLayoutPanel2->Controls->Add(this->patientdetailssubheaddoctortab, 0, 0);
-        this->tableLayoutPanel2->Controls->Add(this->doctordetailssubheaddoctortab, 1, 0);
-        this->tableLayoutPanel2->Controls->Add(this->billingdetailssubheaddoctortab, 2, 0);
-        this->tableLayoutPanel2->Controls->Add(this->doctordashboardpatientdetailsgroupbox, 0, 1);
-        this->tableLayoutPanel2->Controls->Add(this->doctordashboarddoctordetailsgroupbox, 1, 1);
-        this->tableLayoutPanel2->Controls->Add(this->doctordashboardbillingdetailsgroupbox, 2, 1);
-        this->tableLayoutPanel2->Location = System::Drawing::Point(6, 68);
-        this->tableLayoutPanel2->Name = L"tableLayoutPanel2";
-        this->tableLayoutPanel2->RowCount = 2;
-        this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 6.25F)));
-        this->tableLayoutPanel2->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 93.75F)));
-        this->tableLayoutPanel2->Size = System::Drawing::Size(1481, 656);
-        this->tableLayoutPanel2->TabIndex = 1;
+        this->Messages->Controls->Add(this->markreadBtn);
+        this->Messages->Controls->Add(this->readMessagesGroupBox);
+        this->Messages->Controls->Add(this->UnreadMessagesGroupBox);
+        this->Messages->Location = System::Drawing::Point(4, 22);
+        this->Messages->Name = L"Messages";
+        this->Messages->Padding = System::Windows::Forms::Padding(3);
+        this->Messages->Size = System::Drawing::Size(1493, 447);
+        this->Messages->TabIndex = 7;
+        this->Messages->Text = L"Messages";
+        this->Messages->UseVisualStyleBackColor = true;
         // 
-        // patientdetailssubheaddoctortab
+        // markreadBtn
         // 
-        this->patientdetailssubheaddoctortab->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-            | System::Windows::Forms::AnchorStyles::Left)
-            | System::Windows::Forms::AnchorStyles::Right));
-        this->patientdetailssubheaddoctortab->AutoSize = true;
-        this->patientdetailssubheaddoctortab->Location = System::Drawing::Point(3, 0);
-        this->patientdetailssubheaddoctortab->Name = L"patientdetailssubheaddoctortab";
-        this->patientdetailssubheaddoctortab->Size = System::Drawing::Size(491, 41);
-        this->patientdetailssubheaddoctortab->TabIndex = 0;
-        this->patientdetailssubheaddoctortab->Text = L"Patient Details";
-        this->patientdetailssubheaddoctortab->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+        this->markreadBtn->Location = System::Drawing::Point(1171, 9);
+        this->markreadBtn->Name = L"markreadBtn";
+        this->markreadBtn->Size = System::Drawing::Size(234, 23);
+        this->markreadBtn->TabIndex = 4;
+        this->markreadBtn->Text = L"Mark All as Read";
+        this->markreadBtn->UseVisualStyleBackColor = true;
+        this->markreadBtn->Click += gcnew System::EventHandler(this, &Form1::MarkAllAsRead);
         // 
-        // doctordetailssubheaddoctortab
+        // readMessagesGroupBox
         // 
-        this->doctordetailssubheaddoctortab->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-            | System::Windows::Forms::AnchorStyles::Left)
-            | System::Windows::Forms::AnchorStyles::Right));
-        this->doctordetailssubheaddoctortab->AutoSize = true;
-        this->doctordetailssubheaddoctortab->Location = System::Drawing::Point(500, 0);
-        this->doctordetailssubheaddoctortab->Name = L"doctordetailssubheaddoctortab";
-        this->doctordetailssubheaddoctortab->Size = System::Drawing::Size(491, 41);
-        this->doctordetailssubheaddoctortab->TabIndex = 1;
-        this->doctordetailssubheaddoctortab->Text = L"Doctor Details";
-        this->doctordetailssubheaddoctortab->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+        this->readMessagesGroupBox->Location = System::Drawing::Point(42, 246);
+        this->readMessagesGroupBox->Name = L"readMessagesGroupBox";
+        this->readMessagesGroupBox->Size = System::Drawing::Size(1359, 175);
+        this->readMessagesGroupBox->TabIndex = 3;
+        this->readMessagesGroupBox->TabStop = false;
+        this->readMessagesGroupBox->Text = L"Read Messages";
         // 
-        // billingdetailssubheaddoctortab
+        // UnreadMessagesGroupBox
         // 
-        this->billingdetailssubheaddoctortab->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-            | System::Windows::Forms::AnchorStyles::Left)
-            | System::Windows::Forms::AnchorStyles::Right));
-        this->billingdetailssubheaddoctortab->AutoSize = true;
-        this->billingdetailssubheaddoctortab->Location = System::Drawing::Point(997, 0);
-        this->billingdetailssubheaddoctortab->Name = L"billingdetailssubheaddoctortab";
-        this->billingdetailssubheaddoctortab->Size = System::Drawing::Size(481, 41);
-        this->billingdetailssubheaddoctortab->TabIndex = 2;
-        this->billingdetailssubheaddoctortab->Text = L"Billing Details";
-        this->billingdetailssubheaddoctortab->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-        // 
-        // doctordashboardpatientdetailsgroupbox
-        // 
-        this->doctordashboardpatientdetailsgroupbox->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-            | System::Windows::Forms::AnchorStyles::Left)
-            | System::Windows::Forms::AnchorStyles::Right));
-        this->doctordashboardpatientdetailsgroupbox->AutoSize = true;
-        this->doctordashboardpatientdetailsgroupbox->Location = System::Drawing::Point(3, 44);
-        this->doctordashboardpatientdetailsgroupbox->Name = L"doctordashboardpatientdetailsgroupbox";
-        this->doctordashboardpatientdetailsgroupbox->Size = System::Drawing::Size(491, 609);
-        this->doctordashboardpatientdetailsgroupbox->TabIndex = 3;
-        this->doctordashboardpatientdetailsgroupbox->TabStop = false;
-        // 
-        // doctordashboarddoctordetailsgroupbox
-        // 
-        this->doctordashboarddoctordetailsgroupbox->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-            | System::Windows::Forms::AnchorStyles::Left)
-            | System::Windows::Forms::AnchorStyles::Right));
-        this->doctordashboarddoctordetailsgroupbox->AutoSize = true;
-        this->doctordashboarddoctordetailsgroupbox->Location = System::Drawing::Point(500, 44);
-        this->doctordashboarddoctordetailsgroupbox->Name = L"doctordashboarddoctordetailsgroupbox";
-        this->doctordashboarddoctordetailsgroupbox->Size = System::Drawing::Size(491, 609);
-        this->doctordashboarddoctordetailsgroupbox->TabIndex = 4;
-        this->doctordashboarddoctordetailsgroupbox->TabStop = false;
-        // 
-        // doctordashboardbillingdetailsgroupbox
-        // 
-        this->doctordashboardbillingdetailsgroupbox->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-            | System::Windows::Forms::AnchorStyles::Left)
-            | System::Windows::Forms::AnchorStyles::Right));
-        this->doctordashboardbillingdetailsgroupbox->AutoSize = true;
-        this->doctordashboardbillingdetailsgroupbox->Location = System::Drawing::Point(997, 44);
-        this->doctordashboardbillingdetailsgroupbox->Name = L"doctordashboardbillingdetailsgroupbox";
-        this->doctordashboardbillingdetailsgroupbox->Size = System::Drawing::Size(481, 609);
-        this->doctordashboardbillingdetailsgroupbox->TabIndex = 5;
-        this->doctordashboardbillingdetailsgroupbox->TabStop = false;
+        this->UnreadMessagesGroupBox->Location = System::Drawing::Point(42, 38);
+        this->UnreadMessagesGroupBox->Name = L"UnreadMessagesGroupBox";
+        this->UnreadMessagesGroupBox->Size = System::Drawing::Size(1359, 174);
+        this->UnreadMessagesGroupBox->TabIndex = 2;
+        this->UnreadMessagesGroupBox->TabStop = false;
+        this->UnreadMessagesGroupBox->Text = L"Unread Messages";
         // 
         // Form1
         // 
@@ -1107,14 +1264,15 @@ namespace CppCLRWinFormsProject {
         this->tableLayoutPanel1->PerformLayout();
         this->doctordashboardtab->ResumeLayout(false);
         this->doctordashboardtab->PerformLayout();
+        this->tableLayoutPanel2->ResumeLayout(false);
+        this->tableLayoutPanel2->PerformLayout();
         this->billingtab->ResumeLayout(false);
         this->billingtab->PerformLayout();
         this->feedbacktab->ResumeLayout(false);
         this->feedbacktab->PerformLayout();
         this->feedbackselectionbox->ResumeLayout(false);
         this->feedbackselectionbox->PerformLayout();
-        this->tableLayoutPanel2->ResumeLayout(false);
-        this->tableLayoutPanel2->PerformLayout();
+        this->Messages->ResumeLayout(false);
         this->ResumeLayout(false);
 
     }
@@ -1150,17 +1308,19 @@ namespace CppCLRWinFormsProject {
     private: System::Void adddoctor_Click(System::Object^ sender, System::EventArgs^ e) {
         String^ doctorName = doctornametextfield->Text;
         String^ specialization = specializationtextfield->Text;
-        String^ availableHours = availablehourstextfield->Text;
+        String^ availableHours = this->dtimingselect->SelectedItem->ToString();
 
         try {
             doctorManager->SaveDoctor(doctorName, specialization, availableHours);
             MessageBox::Show("Doctor details saved successfully!");
             doctornametextfield->Text = "";
             specializationtextfield->Text = "";
-            availablehourstextfield->Text = "";
+            this->dtimingselect->SelectedIndex = -1;
 
             LoadDoctorNames();
             LoadDoctorNamesIntoFeedbackComboBox();
+            LoadDoctorNamesIntoMessageComboBox();
+            LoadData();
         }
         catch (ArgumentException^ argEx) {
             MessageBox::Show(argEx->Message);
@@ -1189,6 +1349,7 @@ namespace CppCLRWinFormsProject {
             MessageBox::Show("Doctor details deleted successfully!");
             deletedoctorcombobox->SelectedIndex = -1;
             LoadDoctorNames(); // Yahan pr Referesh kar rahe 
+            LoadData();
         }
         /*catch (ArgumentException^ argEx) {
             MessageBox::Show(argEx->Message);
@@ -1218,6 +1379,7 @@ namespace CppCLRWinFormsProject {
                    LoadPatientNames();
 
                    LoadPatientNamesIntoComboBox();
+                   LoadData();
                }
                catch (Exception^ ex) {
                    MessageBox::Show(ex->Message);
@@ -1225,7 +1387,7 @@ namespace CppCLRWinFormsProject {
            }
 
 
-                  private: System::Void deletePatientButton_Click(System::Object^ sender, System::EventArgs^ e) {
+           private: System::Void deletePatientButton_Click(System::Object^ sender, System::EventArgs^ e) {
                       String^ name = deletepatientcombobox->SelectedItem == nullptr
                           ? nullptr
                           : deletepatientcombobox->SelectedItem->ToString();
@@ -1235,13 +1397,14 @@ namespace CppCLRWinFormsProject {
                           MessageBox::Show("Patient deleted successfully!");
                           deletepatientcombobox->SelectedIndex = -1;
                           LoadPatientNames();
+                          LoadData();
                       }
                       catch (Exception^ ex) {
                           MessageBox::Show(ex->Message);
                       }
                   }
 
-                         private: void LoadPatientNames() {
+            private: void LoadPatientNames() {
                              try {
                                  deletepatientcombobox->Items->Clear();
                                  List<String^>^ names = patientManager->LoadPatientNames();
@@ -1257,7 +1420,7 @@ namespace CppCLRWinFormsProject {
    ////<PatientSummary>
 
 /// <Loginummary>
-private:void loginButton_Click(Object^ sender, EventArgs^ e) {
+        private:void loginButton_Click(Object^ sender, EventArgs^ e) {
     String^ email = emailtextbox->Text;
     String^ password = passwordtextbox->Text;
 
@@ -1288,6 +1451,11 @@ private:void loginButton_Click(Object^ sender, EventArgs^ e) {
             
 
         }
+
+        emailtextbox->Text = "";
+        passwordtextbox->Text = "";
+        doctorradio->Checked = false;
+
         MessageBox::Show("Login successful!");
     }
     else
@@ -1296,7 +1464,7 @@ private:void loginButton_Click(Object^ sender, EventArgs^ e) {
     }
 }
 
-       private: System::Void logoutbutton_Click(System::Object^ sender, System::EventArgs^ e)
+        private: System::Void logoutbutton_Click(System::Object^ sender, System::EventArgs^ e)
        {
            // Hide all tabs except the login tab
            tabControl1->TabPages->Clear();
@@ -1306,7 +1474,7 @@ private:void loginButton_Click(Object^ sender, EventArgs^ e) {
 /// </Loginummary>
 
               ///<BIlling Summary>
-                        private: void LoadPatientNamesIntoComboBox() {
+             private: void LoadPatientNamesIntoComboBox() {
                             try {
                                 billpatientnamedropdown->Items->Clear();
                                 List<String^>^ names = patientManager->LoadPatientNames();
@@ -1319,7 +1487,7 @@ private:void loginButton_Click(Object^ sender, EventArgs^ e) {
                             }
                         }
 
-                             private: System::Void addbill_Click(System::Object^ sender, System::EventArgs^ e) {
+           private: System::Void addbill_Click(System::Object^ sender, System::EventArgs^ e) {
                                  String^ selectedPatient = billpatientnamedropdown->Text;
                                  String^ totalAmount = totalamounttextbox->Text;
                                  String^ paidAmount = paidamounttextbox->Text;
@@ -1340,6 +1508,9 @@ private:void loginButton_Click(Object^ sender, EventArgs^ e) {
                                      totalamounttextbox->Text = "";
                                      paidamounttextbox->Text = "";
                                      billpatientnamedropdown->SelectedIndex = -1;
+
+
+                                     LoadData();
                                  }
                                  catch (InvalidOperationException^ ex) {
                                      MessageBox::Show("Error: " + ex->Message, "Duplicate Entry", MessageBoxButtons::OK, MessageBoxIcon::Warning);
@@ -1351,8 +1522,9 @@ private:void loginButton_Click(Object^ sender, EventArgs^ e) {
 
               ///<BIlling Summary>
 
-                                    ////<Feedback Summary>
-                                        private: void LoadDoctorNamesIntoFeedbackComboBox() {
+
+      ////<Feedback Summary>
+        private: void LoadDoctorNamesIntoFeedbackComboBox() {
                                             try {
                                                 feedbackdoctordropdown->Items->Clear();
                                                 List<String^>^ names = doctorManager->LoadDoctorNames();
@@ -1365,7 +1537,7 @@ private:void loginButton_Click(Object^ sender, EventArgs^ e) {
                                             }
                                         }
 
-                                               private: System::Void addfeedbackbutton_Click(System::Object^ sender, System::EventArgs^ e) {
+          private: System::Void addfeedbackbutton_Click(System::Object^ sender, System::EventArgs^ e) {
                                                    // Get the selected doctor and feedback rating
                                                    String^ selectedDoctor = this->feedbackdoctordropdown->SelectedItem->ToString();
                                                    String^ feedbackRating = "";
@@ -1401,20 +1573,58 @@ private:void loginButton_Click(Object^ sender, EventArgs^ e) {
                                                        this->excellentradio->Checked = false;
                                                        this->goodradio->Checked = false;
                                                        this->badradio->Checked = false;
+
+                                                       LoadData();
                                                    }
                                                    catch (Exception^ ex) {
                                                        MessageBox::Show("Error: " + ex->Message);
                                                    }
                                                }
 
-                                    ////<Feedback Summary>
+          private: System::Void addmessagebutton_Click(System::Object^ sender, System::EventArgs^ e) {
+                                                        
+                                                          String^ selectedDoctor = this->mdoctorselectdropdown->SelectedItem->ToString();
+                                                          String^ message = messagetextbox->Text;
 
 
-                                                      /// <summary>
-                                                      /// Dashboard data loading function
-                                                      ///                                              
-                                                      ///        /// </summary>
-                                                      void LoadData()
+                                                          // Ensure both doctor and message
+                                                          if (selectedDoctor == nullptr || message == "") {
+                                                              MessageBox::Show("Please select both a doctor and write a message.");
+                                                              return;
+                                                          }
+
+                                                          // Create an instance 
+                                                          MessageManager^ messageManager = gcnew MessageManager("messages.txt");
+                                                          try {
+                                                              messageManager->SaveMessage(selectedDoctor, message);
+                                                              MessageBox::Show("Message Send successfully!");
+                                                              this->mdoctorselectdropdown->SelectedIndex = -1;  // Clears the selection
+                                                              messagetextbox->Text = "";
+                                                          }
+                                                          catch (Exception^ ex) {
+                                                              MessageBox::Show("Error: " + ex->Message);
+                                                          }
+                                                      }
+                                    
+          private: void LoadDoctorNamesIntoMessageComboBox() {
+                                        try {
+                                            mdoctorselectdropdown->Items->Clear();
+                                            List<String^>^ names = doctorManager->LoadDoctorNames();
+                                            for each (String ^ name in names) {
+                                                mdoctorselectdropdown->Items->Add(name);
+                                            }
+                                        }
+                                        catch (Exception^ ex) {
+                                            MessageBox::Show("Error loading doctor names: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+                                        }
+                                    }
+       ////<Feedback Summary>
+
+
+        /// <summary>
+         /// Dashboard data loading function
+                                                 
+     void LoadData()
                                                       {
                                                           try {
                                                               // Initialize DataHandler for each category of data
@@ -1422,13 +1632,53 @@ private:void loginButton_Click(Object^ sender, EventArgs^ e) {
                                                               DataHandler^ doctorDataHandler = gcnew DataHandler("DoctorDetails.txt");
                                                               DataHandler^ billingDataHandler = gcnew DataHandler("BillingDetails.txt");
                                                               DataHandler^ feedbackDataHandler = gcnew DataHandler("feedback.txt");
+                                                              DataHandler^ messageDataHandler = gcnew DataHandler("messages.txt");
+                                                             
 
                                                               // Load data from the files
                                                               List<String^>^ patientData = patientDataHandler->LoadDetails();
                                                               List<String^>^ doctorData = doctorDataHandler->LoadDetails();
                                                               List<String^>^ billingData = billingDataHandler->LoadDetails();
                                                               List<String^>^ feedbackData = feedbackDataHandler->LoadDetails();
+                                                              List<String^>^ messages = messageDataHandler->LoadDetails();
 
+                                                            
+                                                              List<String^>^ unreadMessages = gcnew List<String^>();
+                                                              List<String^>^ readMessages = gcnew List<String^>();
+
+                                                              String^ currentMessage = "";
+                                                              String^ currentDoctor = "";
+                                                              for each (String ^ line in messages) {
+                                                                  if (line->Trim() == "----------------------------------") {
+                                                                      if (currentMessage->Contains("Status: Read")) {
+                                                                          readMessages->Add(currentDoctor);
+                                                                          readMessages->Add(currentMessage);
+
+                                                                      }
+                                                                      else if (currentMessage->Contains("Status: Unread")) {
+                                                                          unreadMessages->Add(currentDoctor);
+                                                                          unreadMessages->Add(currentMessage);
+                                                                      }
+                                                                      currentMessage = ""; // Reset for the next message
+                                                                  }
+                                                                  else {
+                                                                      currentMessage += line + Environment::NewLine;
+                                                                  }
+                                                              }
+
+                                                              // Populate the respective GroupBoxes
+                                                              PopulateGroupBox(this->UnreadMessagesGroupBox, unreadMessages);
+                                                              PopulateGroupBox(this->readMessagesGroupBox, readMessages);
+
+                                                              if (unreadMessages->Count == 0) {
+                                                                  this->UnreadMessagesGroupBox->Visible = false;
+                                                                  this->markreadBtn->Visible = false;
+                                                              }
+                                                              else {
+                                                                  this->UnreadMessagesGroupBox->Visible = true;
+                                                                  this->markreadBtn->Visible = true;
+                                                              }
+                                                            
                                                               // Populate GroupBoxes with the loaded data
                                                               PopulateGroupBox(this->patientdetailgroupbox, patientData);
                                                               PopulateGroupBox(this->doctordetailsgroupbox, doctorData);
@@ -1437,13 +1687,16 @@ private:void loginButton_Click(Object^ sender, EventArgs^ e) {
                                                               PopulateGroupBox(this->doctordashboardpatientdetailsgroupbox, patientData);
                                                               PopulateGroupBox(this->doctordashboarddoctordetailsgroupbox, doctorData);
                                                               PopulateGroupBox(this->doctordashboardbillingdetailsgroupbox, billingData);
+                                                            
+
+                                                              
                                                           }
                                                           catch (Exception^ ex) {
                                                               MessageBox::Show("Error: " + ex->Message, "Data Loading Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
                                                           }
                                                       }
 
-                                                      void PopulateGroupBox(GroupBox^ groupBox, List<String^>^ data)
+       void PopulateGroupBox(GroupBox^ groupBox, List<String^>^ data)
                                                       {
                                                           int yPosition = 20;
 
@@ -1458,10 +1711,51 @@ private:void loginButton_Click(Object^ sender, EventArgs^ e) {
                                                           }
                                                       }
 
+       /// Dashboard data loading function
+    /// </summary>
+    /// 
+    
+       ///Message Summary
+       /// 
+   
+          private: void MarkAllAsRead(Object^ sender, EventArgs^ e) {
+              try {
+                  List<String^>^ lines = gcnew List<String^>();
+
+                  // Read all lines from the file
+                  System::IO::StreamReader^ reader = gcnew System::IO::StreamReader("messages.txt");
+                  String^ line;
+
+                  while ((line = reader->ReadLine()) != nullptr) {
+                      if (line->Contains("Status: Unread")) {
+                          line = line->Replace("Status: Unread", "Status: Read");
+                      }
+                      lines->Add(line);
+                  }
+                  reader->Close();
+
+                  // Write the updated lines back to the file
+                  System::IO::StreamWriter^ writer = gcnew System::IO::StreamWriter("messages.txt", false);
+                  for each (String ^ updatedLine in lines) {
+                      writer->WriteLine(updatedLine);
+                  }
+                  writer->Close();
+
+                  // Reload the messages
+                  LoadData();
+              }
+              catch (Exception^ ex) {
+                  MessageBox::Show("Error: " + ex->Message, "Update Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+              }
+          }
 
 
-                                                      /// Dashboard data loading function
-                                                      ///                                                      /// </summary>
+       /// 
+       ///Message Summary
+
+
+
+
 
 };
 } 

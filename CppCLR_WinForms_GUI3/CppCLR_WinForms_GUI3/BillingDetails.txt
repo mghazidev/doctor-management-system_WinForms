@@ -1,4 +1,4 @@
-Patient Name: this is the last patient testing
+Patient Name: Patient 1
 Total Amount: 100
-Paid Amount: 99
+Paid Amount: 100
 ----------------------------------

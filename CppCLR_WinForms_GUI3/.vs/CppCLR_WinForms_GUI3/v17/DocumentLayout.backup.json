@@ -18,24 +18,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Form1.h",
-              "DocumentMoniker": "C:\\Users\\Muhammad Ghazi\\source\\repos\\project\\CppCLR_WinForms_GUI3\\CppCLR_WinForms_GUI3\\Form1.h",
-              "RelativeDocumentMoniker": "CppCLR_WinForms_GUI3\\Form1.h",
-              "ToolTip": "C:\\Users\\Muhammad Ghazi\\source\\repos\\project\\CppCLR_WinForms_GUI3\\CppCLR_WinForms_GUI3\\Form1.h",
-              "RelativeToolTip": "CppCLR_WinForms_GUI3\\Form1.h",
-              "ViewState": "AgIAAOkEAAAAAAAAAADgv0oFAABZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-16T11:40:47.143Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -48,6 +35,19 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-12-16T11:40:08.888Z",
               "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.h",
+              "DocumentMoniker": "C:\\Users\\Muhammad Ghazi\\source\\repos\\project\\CppCLR_WinForms_GUI3\\CppCLR_WinForms_GUI3\\Form1.h",
+              "RelativeDocumentMoniker": "CppCLR_WinForms_GUI3\\Form1.h",
+              "ToolTip": "C:\\Users\\Muhammad Ghazi\\source\\repos\\project\\CppCLR_WinForms_GUI3\\CppCLR_WinForms_GUI3\\Form1.h",
+              "RelativeToolTip": "CppCLR_WinForms_GUI3\\Form1.h",
+              "ViewState": "AgIAAK4GAAAAAAAAAAAcwEEGAABYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-16T11:40:47.143Z",
+              "EditorCaption": ""
             }
           ]
         }

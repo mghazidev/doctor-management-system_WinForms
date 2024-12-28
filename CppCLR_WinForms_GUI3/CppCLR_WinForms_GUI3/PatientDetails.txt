@@ -1,4 +1,4 @@
-Patient Name: this is the last patient testing
-Disease: best diseae
-Contact: 033447756849
+Patient Name: Patient 1
+Disease: Disease 1
+Contact: 03014424739
 ----------------------------------
